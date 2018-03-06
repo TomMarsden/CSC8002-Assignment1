@@ -1,55 +1,50 @@
 
 public class LargeCar implements Car {
-
+	
 	private final int fCap;
 	private final String reg;
 	private int fLevel;
 	private boolean tankFull;
 	private boolean rented;
-	private static int noOfLCars;
-	
-	
+	private static int noOfLCars =0;
 
 	public LargeCar(){
+		noOfLCars++;
 		fCap = 49;
 		fLevel = 0;
 		tankFull = false;
 		rented = false;
-		reg = "a" + String.format("%04d", noOfLCars);
+		reg = "b" + String.format("%04d", noOfLCars);
 	}
-	
+
 	public String getReg(){
 		return reg;
 	}
-	
+
 	public int getFuelCap(){
 		return fCap;
 	}
-	
+
 	public int getFuel(){
 		return fLevel;
 	}
-	
+
 	public boolean tankFull(){
-		if(tankFull){
-			return true;
-		} else {
-			return false;
-		}
+		return tankFull;
 	}
-	
+
 	public boolean isRented(){
 		return rented;
 	}
-	
+
 	public void rentCar(){
 		rented = true;
 	}
-	
+
 	public void returnCar(){
 		rented = false;
 	}
-	
+
 	public int addFuel(int fuel){
 		if(rented){
 			if(tankFull){
@@ -72,7 +67,7 @@ public class LargeCar implements Car {
 				if(fLevel >0){
 					fLevel -= consumption1;
 					return consumption1;
-				} 
+				}
 			} else if(distance >50){
 				if(fLevel >0){
 					fLevel-=consumption1;
@@ -85,5 +80,5 @@ public class LargeCar implements Car {
 		}
 		return -1;
 	}
-	
+
 }

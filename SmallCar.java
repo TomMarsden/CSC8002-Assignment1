@@ -1,14 +1,14 @@
 
 public class SmallCar implements Car{
-	
+
 	private final int fCap;
 	private final String reg;
 	private int fLevel;
 	private boolean tankFull;
 	private boolean rented;
 	private static int noOfSCars = 0;
-	
-	
+
+
 
 	public SmallCar(){
 		noOfSCars++;
@@ -18,35 +18,35 @@ public class SmallCar implements Car{
 		rented = false;
 		reg = "a" + String.format("%04d", noOfSCars);
 	}
-	
+
 	public String getReg(){
 		return reg;
 	}
-	
+
 	public int getFuelCap(){
 		return fCap;
 	}
-	
+
 	public int getFuel(){
 		return fLevel;
 	}
-	
+
 	public boolean tankFull(){
 		return tankFull;
 	}
-	
+
 	public boolean isRented(){
 		return rented;
 	}
-	
+
 	public void rentCar(){
 		rented = true;
 	}
-	
+
 	public void returnCar(){
 		rented = false;
 	}
-	
+
 	public int addFuel(int fuel){
 		if(rented){
 			if(tankFull){
@@ -60,7 +60,7 @@ public class SmallCar implements Car{
 		}
 		return -1;
 	}
-	
+
 	public int drive(int distance){
 		int consumption = Math.round(distance/20);
 		if(rented){
@@ -74,5 +74,5 @@ public class SmallCar implements Car{
 			return 0;
 		}
 	}
-	
+
 }

@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class CarRental {
 	
@@ -12,7 +11,7 @@ public class CarRental {
 	
 	public static void main(String[] args) {
 		
-		//Populating arraylists with cars.
+		//Populating ArrayLists with cars.
 		
 		for(int i = 0; i < 30; i++){
 			SmallCar c = new SmallCar();

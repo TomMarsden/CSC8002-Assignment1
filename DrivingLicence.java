@@ -1,6 +1,4 @@
-import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
 
 public class DrivingLicence {
 	private final String name;
