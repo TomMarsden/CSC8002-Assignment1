@@ -1,70 +1,68 @@
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class DrivingLicence {
-	private final String name;
-	private final Calendar dob;
-	private String lNumber;
-	private final Calendar doi;
+	private final Name n;
+	private final LocalDate dob, doi;
+	private final LocalDate curDate = LocalDate.now();
+	private LicenceNumber lNumber;
 	private boolean full;
 	private static int noOfDrivers = 0;
-	private final Calendar curDate = Calendar.getInstance();
+	private Period age, p;
 	
-	public DrivingLicence(String name,Calendar dob, Calendar doi,boolean full){
+	public DrivingLicence(String fName, String lName, LocalDate dob, LocalDate doi, boolean full){
 		noOfDrivers++;
-		if(name.length()==0) throw new IllegalArgumentException("Empty String");
-		String fInitial = name.split("s+")[0].split("")[0];
-		String sInitial = name.split("s+")[1].split("")[0];
-		this.name=name;
+		n = Name.getInstance(fName,lName);
+		if(n.toString().length()==0) throw new IllegalArgumentException("Empty String");
 		this.dob=dob;
 		this.doi=doi;
 		this.full=full;
-		lNumber = fInitial+"-"+sInitial+"-"+noOfDrivers;
-		curDate.set(Calendar.HOUR_OF_DAY, 0);
+		lNumber = LicenceNumber.getInstance(n.getFirstInitial(), n.getSecondInitial(), noOfDrivers);
 	}
 
 	public String getName() {
-		return name;
+		return n.toString();
 	}
 
-	public Calendar getDOB() {
+	public LocalDate getDOB() {
 		return dob;
 	}
 
 	public String getlNumber() {
-		return lNumber;
+		return lNumber.toString();
 	}
 
-	public Calendar getDoi() {
+	public LocalDate getDoi() {
 		return doi;
 	}
 	
+	public boolean isFull() {
+		return full;
+	}
+	
 	public boolean rentSmallCheck(){
-		int licAge;
-		licAge = curDate.YEAR - doi.get(Calendar.YEAR);
-		if(licAge >=1){
+		age = Period.between(curDate, dob);
+		p = Period.between(curDate, doi);
+		if(age.getYears() >=18 && p.getYears() >=1 && full){
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean rentLargeCheck(){
-		int licAge;
-		licAge = curDate.YEAR - doi.get(Calendar.YEAR);
-		if(licAge >=5){
+		age = Period.between(curDate, dob);
+		p = Period.between(curDate, doi);
+		if(age.getYears() >=25 && p.getYears() >=5 && full){
 			return true;
 		}
 		return false;
 	}
 	
 	public int getAge(){
-		int age;
-		age = curDate.YEAR - dob.get(Calendar.YEAR);
-		return age;
+		age = Period.between(curDate, dob);
+		return age.getYears();
 	}
 
-	public boolean isFull() {
-		return full;
-	}
 	
 	
 }

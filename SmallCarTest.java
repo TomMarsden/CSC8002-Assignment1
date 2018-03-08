@@ -1,17 +1,19 @@
+
+
 import org.junit.Assert;
 
 public class SmallCarTest {
 	final static SmallCarTest sct = new SmallCarTest();
-	final SmallCar sc = new SmallCar();
 	
-	public static void main(String[] agrs){
-		sct.testGetFuel();
-		sct.testIsRented();
-		sct.testGetReg();
+	public static void main(String[] args){
+		final SmallCar sc = new SmallCar();
+		sct.testGetFuel(sc);
+		sct.testIsRented(sc);
+		sct.testGetReg(sc);
 	}
 
 
-	private void testGetFuel(){
+	private void testGetFuel(SmallCar sc){
 		
 		Assert.assertEquals(0, sc.getFuel());
 		
@@ -19,7 +21,7 @@ public class SmallCarTest {
 
 	}
 	
-	private void testIsRented(){
+	private void testIsRented(SmallCar sc){
 		
 		Assert.assertEquals(false, sc.isRented());
 		
@@ -31,7 +33,7 @@ public class SmallCarTest {
 		
 	}
 	
-	private void testGetReg(){
+	private void testGetReg(SmallCar sc){
 		
 		Car[] smallCars = new Car[10];
 		

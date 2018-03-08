@@ -46,6 +46,7 @@ public class SmallCar implements Car{
 	public void returnCar(){
 		rented = false;
 	}
+	
 
 	public int addFuel(int fuel){
 		if(rented){

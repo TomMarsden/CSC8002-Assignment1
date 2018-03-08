@@ -6,7 +6,7 @@ public final class Name {
 	private static final Map<String, Name> NAMES = new HashMap<String, Name>();
 	private final String firstName, lastName, strRep;
 	
-	private Name(String firstName, String lastName, String stRep) {
+	private Name(String firstName, String lastName,String stRep) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.strRep = stRep;
@@ -26,11 +26,20 @@ public final class Name {
 		return firstName; 
 	}
 	
+	
 	public String getLastName(){ 
 		return lastName; 
 	}
 	
 	public String toString(){ 
 		return strRep; 
+	}
+	
+	public String getFirstInitial(){
+		return firstName.split("")[0];
+	}
+	
+	public String getSecondInitial(){
+		return lastName.split("")[0];
 	}
 }
