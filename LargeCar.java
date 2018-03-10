@@ -1,62 +1,17 @@
 
-public class LargeCar implements Car {
+public class LargeCar extends CarType {
 	
-	private final int fCap;
-	private final String reg;
-	private int fLevel;
-	private boolean tankFull;
-	private boolean rented;
-	private static int noOfLCars =0;
+	private final Registration reg;
+	private static int noOfLCars = 0;
 
 	public LargeCar(){
+		super(60);
 		noOfLCars++;
-		fCap = 49;
-		fLevel = 0;
-		tankFull = false;
-		rented = false;
-		reg = "b" + String.format("%04d", noOfLCars);
+		reg = Registration.getInstance(noOfLCars);
 	}
-
+	
 	public String getReg(){
-		return reg;
-	}
-
-	public int getFuelCap(){
-		return fCap;
-	}
-
-	public int getFuel(){
-		return fLevel;
-	}
-
-	public boolean tankFull(){
-		return tankFull;
-	}
-
-	public boolean isRented(){
-		return rented;
-	}
-
-	public void rentCar(){
-		rented = true;
-	}
-
-	public void returnCar(){
-		rented = false;
-	}
-
-	public int addFuel(int fuel){
-		if(rented){
-			if(tankFull){
-				return 0;
-			} else if(fLevel+fuel>fCap){
-				fLevel = fCap;
-				return fCap-fLevel;
-			}
-		} else{
-			return 0;
-		}
-		return -1;
+		return reg.toString();
 	}
 	
 	public int drive(int distance){
